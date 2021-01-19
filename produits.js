@@ -53,6 +53,17 @@ const color = document.getElementById("colorSelect");
 const cartButton = document.getElementById("panier");
 
 
+//fonction test renvoie true si la couleur du tableau est 
+//égale a la couleur selectionné par l'utilisateur 
+function isInTheCart(array, valueToDetect) {
+    for (let elem of array) {
+        if (elem.couleur === valueToDetect) {
+        return true
+        }
+    }
+    return false 
+}
+
 cartButton.onclick = ajoutAuPanier;
 
 function ajoutAuPanier(){
@@ -64,22 +75,12 @@ function ajoutAuPanier(){
         { couleur: color.value, quantité: amountItem.value, id: urlId }
     ];
 
-    //fonction test renvoie true si la couleur du tableau est 
-    //égale a la couleur selectionné par l'utilisateur 
-    function isInTheCart(array, valueToDetect) {
-        for (let elem of array) {
-          if (elem.couleur === valueToDetect) {
-            return true
-          }
-        }
-        return false 
-    }
-
-
     // si le panier est vide push le contenu de base de commande
     if (contenuDuPanier === null){
         window.localStorage.setItem(url.get('id'), JSON.stringify(commande));
     }
+
+    //appel la fonction isInTheCart
     //sinon si une couleur correspond 
     else if (isInTheCart(contenuDuPanier, couleurTest)){
 
@@ -93,7 +94,6 @@ function ajoutAuPanier(){
             //verifie chaque couleur du panier et ajoute le resultat précédent au nombre d'article correspondant 
             if(elem.couleur === couleurTest){
                 elem.quantité = result + "";
-                console.log(result)
                 window.localStorage.setItem(url.get('id'), JSON.stringify(contenuDuPanier));
             }
         }
