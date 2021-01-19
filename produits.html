@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+    <title>Produit</title>
+</head>
+<body>
+
+    <section class="content">
+        
+        <div class="logoBlock">
+            <img class="logo" src="../images/logoOrinoco.png" alt="">
+        </div>
+
+        <nav>
+            <a href="index.html">Retour à nos produits</a>
+            <a href="panier.html">Acceder au panier</a>
+        </nav>
+
+        <div class="selectedProduits" id="selectedProduits">
+            <div class="custom" id="customiz">
+                <p>Ce produit est disponible en <span id="amountColors"></span> coloris, selectionnez puis commandez !</p>
+
+                <select id="colorSelect" class="menuColor">
+                </select>
+
+                <p>Combien en voulez vous ? </p>
+                
+                <select id="quantité" class="quantité">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+
+                <button id="panier">Ajouter au panier</button>
+                <p id="popup" class="hidden popup">Bien ajouté au panier !</p>
+
+            </div>
+        </div>
+
+    </section>
+
+    <script src="produits.js"></script>
+</body>
+</html>

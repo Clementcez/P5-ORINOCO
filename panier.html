@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+    <title>panier</title>
+</head>
+<body>
+    <section class="content">
+        <div class="logoBlock">
+            <img class="logo" src="../images/logoOrinoco.png" alt="">
+        </div>
+
+        <nav>
+            <a href="index.html">Retour à nos produits</a>
+            <a href="panier.html">Acceder au panier</a>
+        </nav>
+
+        <h1>PANIER</h1>
+        <div id="plein" class="hidden">
+            <p>Votre panier contient <span id="nombreArticle"></span> articles, voici un résumé:</p>
+        </div>
+        <div id="vide">
+            <p class="vide">Votre panier est vide !</p>
+        </div>
+
+        <button id="vider" class="hidden">Vider le panier !</button>
+
+        <div class="tab">
+            <table>
+                <tr id="article">
+                    <th>Article</th>
+                </tr>
+                <tr id="nom">
+                    <th>Nom</th>
+                </tr>
+                <tr id="prix">
+                    <th>Prix</th>
+                </tr>
+                <tr id="couleur">
+                    <th>Couleur</th>
+                </tr>
+                <tr id="quantitéArticle">
+                    <th>Quantité</th>
+                </tr>
+                <tr id="total">
+                    <th>Total</th>
+                </tr>
+            </table>
+        </div>
+
+        <form id="formulaire">
+            <div>
+                <label for="prenom">Prénom :</label>
+                <input title="ne doit pas contenir de caracteres speciaux ni de chiffres" type="text" id="prenom" name="name" pattern="[a-zA-Z\-\s]{1,99}" minlength="1" maxlength="99" required/>
+            </div>
+            <div>
+                <label for="name">Nom :</label>
+                <input title="ne doit pas contenir de caracteres speciaux ni de chiffres" type="text" id="name" name="user_name" pattern="[a-zA-Z\-\s]{1,99}" minlength="1" maxlength="99" required/>
+            </div>
+            <div>
+                <label for="phone">Telephone :</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" maxlength="10" placeholder="0699..." required>
+            </div>
+            <div>
+                <label for="adress">Adresse :</label>
+                <input title="ne doit pas contenir de caracteres speciaux" type="text" id="adress" name="adresse" pattern="[0-9a-zA-Z\-\s]{1,99}" minlength="1" maxlength="99" required/>
+            </div>
+            <div>
+                <label for="ville">Ville :</label>
+                <input title="ne doit pas contenir de caracteres speciaux" type="text" id="ville" name="ville" pattern="[0-9a-zA-Z\-\s]{1,99}" minlength="1" maxlength="99" required/>
+            </div>
+            <div>
+                <label for="mail">E-mail :</label>
+                <input title="----@----.fr" type="email" id="mail" name="user_email" required/>
+            </div>
+                <button type="submit" class="button" onclick="testHtml()">Commander</button>
+            </form>
+       
+    </section>
+
+    <script src="panier.js"></script>
+</body>
+</html>
