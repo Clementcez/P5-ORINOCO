@@ -1,5 +1,5 @@
 
-window.onload = forEachKey;
+window.onload = recuperation;
 
 const block = document.createElement("div");
 const numberBlock = document.getElementById("nombreArticle");
@@ -25,7 +25,7 @@ viderPanier.onclick = function vider(){
 let calculQantité = 0;
 let prixTotal = 0;
 
-function forEachKey() {
+function recuperation() {
 
     for( let i = 0; i < localStorage.length; i++){
         let ids = localStorage.key(i);
