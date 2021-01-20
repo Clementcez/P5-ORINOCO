@@ -27,7 +27,7 @@ let prixTotal = 0;
 
 function recuperation() {
 
-    for( let i = 0; i < localStorage.length; i++){
+    for(let i = 0; i < localStorage.length; i++){
         let ids = localStorage.key(i);
         const allProducts = JSON.parse(localStorage.getItem(ids));
 
@@ -41,7 +41,7 @@ function recuperation() {
             couleur.innerHTML = elem.couleur;
             tableauCouleur.appendChild(couleur);
 
-            //creer un p pour les noms
+            //creer un p pour les quantités
             const quantité = document.createElement("td");
             quantité.innerHTML = "X" + elem.quantité;
             tableauQuantité.appendChild(quantité);
@@ -95,8 +95,8 @@ function testHtml() {
         alert('Oups! Formulaire non valide');
     } else {
         verification()
-    } 
-  } 
+    }
+} 
 
 function verification(){
     //empeche la redirection automatique du formulaire html
@@ -204,6 +204,7 @@ function verification(){
     }
     else{
         alert('Oups! Quelque chose s\'est mal passé.');
+        return
     }
 };
 
@@ -251,22 +252,8 @@ function envoiServeur(prenom, nom, tel, adress, ville, mail){
 
                             //recupere l'url actuelle sous forme de string puis remplace l'emplacement actuel
                             //par la page de confirmation et redirige l'utilisateur ver elle
-
                             let urlAct = window.location + "";
                             window.location.href = (urlAct.replace(/[^\/]*$/, "confirmation.html"))
-
-                            //
-                            // let quantitéCommande = [];
-                            // for (let elem of document.querySelectorAll("#quantitéArticle > td")){
-                            //     quantitéCommande.push(elem.innerHTML);
-                            // }
-                            // localStorage.setItem("quantitéCommande", JSON.stringify(quantitéCommande));
-
-                            // let couleurCommande = [];
-                            // for (let elem of document.querySelectorAll("#couleur > td")){
-                            //     couleurCommande.push(elem.innerHTML);
-                            // }
-                            // localStorage.setItem("couleurCommande", JSON.stringify(couleurCommande));
                         }
                     )
                 }
