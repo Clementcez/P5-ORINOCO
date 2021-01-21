@@ -54,11 +54,11 @@
         <form id="formulaire">
             <div>
                 <label for="prenom">Prénom :</label>
-                <input title="ne doit pas contenir de caracteres speciaux ni de chiffres" type="text" id="prenom" name="name" pattern="[a-zA-Z\-\s]{1,99}" minlength="1" maxlength="99" required/>
+                <input title="ne doit pas contenir de caracteres speciaux ni de chiffres" type="text" id="prenom" name="name" pattern="[a-zA-Z\s]{2,25}" minlength="1" maxlength="99" required/>
             </div>
             <div>
                 <label for="name">Nom :</label>
-                <input title="ne doit pas contenir de caracteres speciaux ni de chiffres" type="text" id="name" name="user_name" pattern="[a-zA-Z\-\s]{1,99}" minlength="1" maxlength="99" required/>
+                <input title="ne doit pas contenir de caracteres speciaux ni de chiffres" type="text" id="name" name="user_name" pattern="[a-zA-Z\s]{2,25}" minlength="1" maxlength="99" required/>
             </div>
             <div>
                 <label for="phone">Telephone :</label>
@@ -70,7 +70,7 @@
             </div>
             <div>
                 <label for="ville">Ville :</label>
-                <input title="ne doit pas contenir de caracteres speciaux" type="text" id="ville" name="ville" pattern="[0-9a-zA-Z\-\s]{1,99}" minlength="1" maxlength="99" required/>
+                <input title="ne doit pas contenir de caracteres speciaux" type="text" id="ville" name="ville" pattern="[0-9a-zA-Z\-\s]{1,60}" minlength="1" maxlength="99" required/>
             </div>
             <div>
                 <label for="mail">E-mail :</label>

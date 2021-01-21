@@ -16,6 +16,14 @@ const viderPanier = document.getElementById("vider");
 
 const blockPrixTotal = document.createElement("td");
 
+const promesse = {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    mode: 'cors'
+};
+
 //vide le panier 
 viderPanier.onclick = function vider(){
     localStorage.clear();
@@ -32,6 +40,7 @@ function recuperation() {
         const allProducts = JSON.parse(localStorage.getItem(ids));
 
         for (let elem of allProducts){
+            //calcul nombre d'article
             let nombre = Number (elem.quantité);
             let result = calculQantité += nombre;
             numberBlock.innerHTML = result;
@@ -47,43 +56,42 @@ function recuperation() {
             tableauQuantité.appendChild(quantité);
 
             if(elem.id !== undefined){
-                const requestNounours = new XMLHttpRequest();
-                requestNounours.onreadystatechange = function() {
+                fetch(new Request("http://localhost:3000/api/teddies/" + elem.id), promesse).then(function(response){
+                    if (!response.ok) {
+                        alert ('Oups! Quelque chose s\'est mal passé.');
+                    }
+                    else{
+                        response.json().then(function(nounours){
+                            //creer un p pour les noms
+                            const name = document.createElement("td");
+                            name.innerHTML = nounours.name;
+                            tableauNom.appendChild(name);
 
-                    if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-                        const nounours = JSON.parse(this.responseText);
-            
-                        //creer un p pour les noms
-                        const name = document.createElement("td");
-                        name.innerHTML = nounours.name;
-                        tableauNom.appendChild(name);
-            
-                        //creer une balise img pour les images
-                        const imgArticle = document.createElement("td");
-                        const img = document.createElement("img");
-                        img.src = nounours.imageUrl;
-                        imgArticle.appendChild(img);
-                        tableauArticle.appendChild(imgArticle);
-            
-                        //creer un p pour les prix
-                        const prix = document.createElement("td");
-                        prix.innerHTML = nounours.price / 100 + " €";
-                        tableauPrix.appendChild(prix);
-                        
-                        //calcul + creer un p pour le pix total
-                        let prixSpec = Number (nounours.price);
-                        let calculPrixTotal = prixSpec * elem.quantité;
-                        prixTotal += calculPrixTotal;
-                        blockPrixTotal.innerHTML = prixTotal / 100 + "€";
-                        tableauPrixTotal.appendChild(blockPrixTotal);
+                            //creer une balise img pour les images
+                            const imgArticle = document.createElement("td");
+                            const img = document.createElement("img");
+                            img.src = nounours.imageUrl;
+                            imgArticle.appendChild(img);
+                            tableauArticle.appendChild(imgArticle);
 
-                        plein.classList.remove("hidden");
-                        vide.classList.add("hidden");
-                        viderPanier.classList.remove("hidden");
-                    }    
-                };
-                requestNounours.open("GET", "http://localhost:3000/api/teddies/" + elem.id);
-                requestNounours.send();
+                            //creer un p pour les prix
+                            const prix = document.createElement("td");
+                            prix.innerHTML = nounours.price / 100 + " €";
+                            tableauPrix.appendChild(prix);
+                            
+                            //calcul + creer un p pour le pix total
+                            let prixSpec = Number (nounours.price);
+                            let calculPrixTotal = prixSpec * elem.quantité;
+                            prixTotal += calculPrixTotal;
+                            blockPrixTotal.innerHTML = prixTotal / 100 + "€";
+                            tableauPrixTotal.appendChild(blockPrixTotal);
+
+                            plein.classList.remove("hidden");
+                            vide.classList.add("hidden");
+                            viderPanier.classList.remove("hidden");
+                        })
+                    }
+                });
             }
         }
     }

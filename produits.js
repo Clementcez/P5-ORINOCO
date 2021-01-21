@@ -1,52 +1,60 @@
 
 let url = new URLSearchParams(location.search);
 
-const requestNounours = new XMLHttpRequest();
-requestNounours.onreadystatechange = function() {
-    if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-        const nounours = JSON.parse(this.responseText);
-
-        const i = document.getElementById("selectedProduits");
-        const colorSelect = document.getElementById("colorSelect");
-
-        const block = document.createElement("div");
-
-        for (let color of nounours.colors){
-            const colorOption = document.createElement("option");
-            colorOption.value = color;
-            colorOption.innerHTML = color;
-            colorSelect.appendChild(colorOption);
-        }
-
-        // indique le nombre de couleurs disponible
-        const amountColor = document.getElementById("amountColors");
-        amountColor.innerHTML = nounours.colors.length;
-
-        //creer un p pour le noms
-        const name = document.createElement("p");
-        name.innerHTML = nounours.name;
-        block.appendChild(name);
-
-        //creer une balise img pour l'image
-        const img = document.createElement("img");
-        img.src = nounours.imageUrl;
-        block.appendChild(img);
-
-        //creer un p pour le prix
-        const prix = document.createElement("p");
-        prix.innerHTML = nounours.price / 100 + " €";
-        block.appendChild(prix);
-
-        //creer un p pour la decription
-        const descript = document.createElement("p");
-        descript.innerHTML = "DESCRIPTION : " + nounours.description;
-        block.appendChild(descript);
-
-        i.appendChild(block);
-    }
+const promesse = {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    mode: 'cors'
 };
-requestNounours.open("GET", "http://localhost:3000/api/teddies/" + url.get('id'));
-requestNounours.send();
+
+fetch(new Request("http://localhost:3000/api/teddies/" + url.get('id')), promesse).then(function(response){
+    if (!response.ok) {
+        alert ('Oups! Quelque chose s\'est mal passé.');
+    }
+    else{
+        response.json().then(function(nounours){
+            const i = document.getElementById("selectedProduits");
+            const colorSelect = document.getElementById("colorSelect");
+    
+            const block = document.createElement("div");
+    
+            for (let color of nounours.colors){
+                const colorOption = document.createElement("option");
+                colorOption.value = color;
+                colorOption.innerHTML = color;
+                colorSelect.appendChild(colorOption);
+            }
+    
+            // indique le nombre de couleurs disponible
+            const amountColor = document.getElementById("amountColors");
+            amountColor.innerHTML = nounours.colors.length;
+    
+            //creer un p pour le noms
+            const name = document.createElement("p");
+            name.innerHTML = nounours.name;
+            block.appendChild(name);
+    
+            //creer une balise img pour l'image
+            const img = document.createElement("img");
+            img.src = nounours.imageUrl;
+            block.appendChild(img);
+    
+            //creer un p pour le prix
+            const prix = document.createElement("p");
+            prix.innerHTML = nounours.price / 100 + " €";
+            block.appendChild(prix);
+    
+            //creer un p pour la decription
+            const descript = document.createElement("p");
+            descript.innerHTML = "DESCRIPTION : " + nounours.description;
+            block.appendChild(descript);
+    
+            i.appendChild(block);
+        })
+    }
+});
 
 const amountItem = document.getElementById("quantité");
 const color = document.getElementById("colorSelect");
