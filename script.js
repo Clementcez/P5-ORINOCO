@@ -7,7 +7,7 @@ const promesse = {
     mode: 'cors'
 };
 
-fetch(new Request("http://localhost:3000/api/teddies"), promesse).then(function(response){
+fetch(new Request("https://orinoco-bak.herokuapp.com/api/teddies"), promesse).then(function(response){
     if (!response.ok) {
         alert ('Oups! Quelque chose s\'est mal passé.');
     }
@@ -47,7 +47,7 @@ fetch(new Request("http://localhost:3000/api/teddies"), promesse).then(function(
     }
 });
 
-fetch(new Request("http://localhost:3000/api/cameras"), promesse).then(function(response){
+fetch(new Request("https://orinoco-bak.herokuapp.com/api/cameras"), promesse).then(function(response){
     if (!response.ok) {
         alert ('Oups! Quelque chose s\'est mal passé.');
     }
@@ -87,7 +87,7 @@ fetch(new Request("http://localhost:3000/api/cameras"), promesse).then(function(
     }
 });
 
-fetch(new Request("http://localhost:3000/api/furniture"), promesse).then(function(response){
+fetch(new Request("https://orinoco-bak.herokuapp.com/api/furniture"), promesse).then(function(response){
     if (!response.ok) {
         alert ('Oups! Quelque chose s\'est mal passé.');
     }

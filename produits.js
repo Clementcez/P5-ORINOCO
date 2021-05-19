@@ -9,7 +9,7 @@ const promesse = {
     mode: 'cors'
 };
 
-fetch(new Request("http://localhost:3000/api/teddies/" + url.get('id')), promesse).then(function(response){
+fetch(new Request("https://orinoco-bak.herokuapp.com/api/teddies/" + url.get('id')), promesse).then(function(response){
     if (!response.ok) {
         alert ('Oups! Quelque chose s\'est mal passé.');
     }

@@ -56,7 +56,7 @@ function recuperation() {
             tableauQuantité.appendChild(quantité);
 
             if(elem.id !== undefined){
-                fetch(new Request("http://localhost:3000/api/teddies/" + elem.id), promesse).then(function(response){
+                fetch(new Request("https://orinoco-bak.herokuapp.com/api/teddies" + elem.id), promesse).then(function(response){
                     if (!response.ok) {
                         alert ('Oups! Quelque chose s\'est mal passé.');
                     }
@@ -242,7 +242,7 @@ function envoiServeur(prenom, nom, tel, adress, ville, mail){
                 products: ids
             }
             //requete serveur
-            fetch("http://localhost:3000/api/teddies/order", {
+            fetch("https://orinoco-bak.herokuapp.com/api/teddies/order", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
