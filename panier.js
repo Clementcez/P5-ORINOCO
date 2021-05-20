@@ -38,6 +38,17 @@ function recuperation() {
     for(let i = 0; i < localStorage.length; i++){
         let ids = localStorage.key(i);
         const allProducts = JSON.parse(localStorage.getItem(ids));
+        let type = ''
+        
+        if (allProducts[0].type === 'nounours'){
+            type ='teddies'
+        }
+        else if (allProducts[0].type === 'cam'){
+            type = 'cameras'
+        }
+        else(
+            type = 'furniture'
+        )
 
         for (let elem of allProducts){
             //calcul nombre d'article
@@ -56,7 +67,7 @@ function recuperation() {
             tableauQuantité.appendChild(quantité);
 
             if(elem.id !== undefined){
-                fetch(new Request("https://orinoco-bak.herokuapp.com/api/teddies" + elem.id), promesse).then(function(response){
+                fetch(new Request("https://orinoco-bak.herokuapp.com/api/" + type + "/" + elem.id), promesse).then(function(response){
                     if (!response.ok) {
                         alert ('Oups! Quelque chose s\'est mal passé.');
                     }
@@ -226,6 +237,19 @@ function envoiServeur(prenom, nom, tel, adress, ville, mail){
     for( let i = 0; i < localStorage.length; i++){
         let id = localStorage.key(i);
         ids.push(id);
+
+        const allProducts = JSON.parse(localStorage.getItem(ids));
+        let type = ''
+        
+        if (allProducts[0].type === 'nounours'){
+            type ='teddies'
+        }
+        else if (allProducts[0].type === 'cam'){
+            type = 'cameras'
+        }
+        else(
+            type = 'furniture'
+        )
         
         //si i contient le meme nombre que la longueur du tableau local storage -1
         //créer l'objet envoyer au serveur
@@ -242,7 +266,7 @@ function envoiServeur(prenom, nom, tel, adress, ville, mail){
                 products: ids
             }
             //requete serveur
-            fetch("https://orinoco-bak.herokuapp.com/api/teddies/order", {
+            fetch("https://orinoco-bak.herokuapp.com/api/" + type + "/order", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

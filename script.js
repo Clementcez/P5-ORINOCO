@@ -36,7 +36,7 @@ fetch(new Request("https://orinoco-bak.herokuapp.com/api/teddies"), promesse).th
                 //creer un bouton avec url
                 const button = document.createElement("button");
                 const lien = document.createElement("a");
-                lien.href = "produits.html?id=" + nounours._id;
+                lien.href = "produits.html?type=nounours&id=" + nounours._id;
                 lien.innerHTML = "Explorer moi !"
                 block.appendChild(button);
                 button.appendChild(lien);
@@ -76,7 +76,7 @@ fetch(new Request("https://orinoco-bak.herokuapp.com/api/cameras"), promesse).th
                 //creer un bouton avec url
                 const button = document.createElement("button");
                 const lien = document.createElement("a");
-                lien.href = "produits.html?id=" + cameras._id;
+                lien.href = "produits.html?type=cam&id=" + cameras._id;
                 lien.innerHTML = "Explorer moi !"
                 block.appendChild(button);
                 button.appendChild(lien);
@@ -116,7 +116,7 @@ fetch(new Request("https://orinoco-bak.herokuapp.com/api/furniture"), promesse).
                 //creer un bouton avec url
                 const button = document.createElement("button");
                 const lien = document.createElement("a");
-                lien.href = "produits.html?id=" + furnitures._id;
+                lien.href = "produits.html?type=meuble&id=" + furnitures._id;
                 lien.innerHTML = "Explorer moi !"
                 block.appendChild(button);
                 button.appendChild(lien);

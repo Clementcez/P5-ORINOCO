@@ -26,6 +26,11 @@ button{
     cursor: pointer;
 }
 
+button:hover{
+    transform: translateY(-5px) scale(1.1);
+    transition: 0.3s;
+}
+
 body{
     display: flex;
     align-items: center;
@@ -33,6 +38,23 @@ body{
     background: linear-gradient(0.25turn, #E68A06, #915EFE);
     margin: unset;
     font-family: 'Finger Paint', cursive;
+}
+
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    height: 5rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    border-top: solid black 2px;
+    border-bottom: solid black 2px;
+    box-shadow: 0px 4px 18px 3px rgba(0,0,0,0.75);
+}
+
+header > h1{
+    margin: unset;
 }
 
 .content{
@@ -74,6 +96,7 @@ nav{
     width: 280px;
     box-shadow: 0px 3px 33px -15px rgba(0,0,0,0.75);
     border-radius: 15px;
+    border: solid black 2px;
 }
 
 .produits > div > img{

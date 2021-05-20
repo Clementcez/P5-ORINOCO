@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <title>Produit</title>
 </head>
 <body>
@@ -16,16 +17,25 @@
             <img class="logo" src="img/logoOrinoco.png" alt="">
         </div>
 
-        <nav>
-            <a href="index.html">Retour à nos produits</a>
-            <a href="panier.html">Acceder au panier</a>
-        </nav>
+        <header>
+            <nav>
+                <a href="index.html">
+                    <i class="fas fa-arrow-circle-left"></i>
+                    Retour à nos produits 
+                </a>
+            </nav>
+            <nav>
+                <a href="panier.html">Acceder au panier
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </nav>
+        </header>
 
         <div class="selectedProduits" id="selectedProduits">
             <div class="custom" id="customiz">
-                <p>Ce produit est disponible en <span id="amountColors"></span> coloris, selectionnez puis commandez !</p>
+                <p>Ce produit est disponible en <span id="amountColors"></span> version(s), selectionnez puis commandez !</p>
 
-                <select id="colorSelect" class="menuColor">
+                <select id="versionSelect" class="menuColor">
                 </select>
 
                 <p>Combien en voulez vous ? </p>
