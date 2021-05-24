@@ -232,15 +232,19 @@ function envoiServeur(prenom, nom, tel, adress, ville, mail){
 
     //variable contenant un tableau des id recuperé dans local storage
     let ids = [];
+    let n = -1
 
     //recupere les id des produits dans le local storage et les ajoutes au tableau ids
     for( let i = 0; i < localStorage.length; i++){
         let id = localStorage.key(i);
         ids.push(id);
+        n ++
+        console.log(ids)
+        console.log(n)
 
-        const allProducts = JSON.parse(localStorage.getItem(ids));
+        const allProducts = JSON.parse(localStorage.getItem(ids[n]));
         let type = ''
-        
+        console.log(allProducts)
         if (allProducts[0].type === 'nounours'){
             type ='teddies'
         }
@@ -250,6 +254,8 @@ function envoiServeur(prenom, nom, tel, adress, ville, mail){
         else(
             type = 'furniture'
         )
+
+        console.log(type)
         
         //si i contient le meme nombre que la longueur du tableau local storage -1
         //créer l'objet envoyer au serveur
